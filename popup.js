@@ -28,6 +28,7 @@ class TeamTimezoneManager {
         this.setupEventListeners();
         this.setupDragAndDrop();
         this.updateDisplay(); // Use the new category-based display
+        this.updateCategoryDropdown(); // Populate the add member category dropdown
         
         // Update times immediately and then every minute
         this.updateTimes();
@@ -361,7 +362,7 @@ class TeamTimezoneManager {
     }
 
     // Team management
-    addPerson(name, timezone, designation = '', phone = '', email = '') {
+    addPerson(name, timezone, designation = '', phone = '', email = '', category = 'general') {
         if (!name.trim() || !timezone.trim()) {
             alert("Please enter both name and timezone");
             return false;
@@ -398,7 +399,8 @@ class TeamTimezoneManager {
             favorite: false,
             designation: designation.trim(),
             phone: phone.trim(),
-            email: email.trim()
+            email: email.trim(),
+            category: category
         });
         this.saveToStorage();
         this.updateTimes();
@@ -878,7 +880,7 @@ class TeamTimezoneManager {
                 }
                 
                 // Save new order (don't call updateDisplay as it re-renders everything)
-                this.saveToStorage();
+                this.saveOrder();
             }
             
             // Reset state
@@ -1408,13 +1410,15 @@ class TeamTimezoneManager {
             const designation = document.getElementById('new-designation').value;
             const phone = document.getElementById('new-phone').value;
             const email = document.getElementById('new-email').value;
+            const category = document.getElementById('new-category').value;
             
-            if (this.addPerson(name, timezone, designation, phone, email)) {
+            if (this.addPerson(name, timezone, designation, phone, email, category)) {
                 document.getElementById('new-name').value = '';
                 document.getElementById('new-timezone').value = '';
                 document.getElementById('new-designation').value = '';
                 document.getElementById('new-phone').value = '';
                 document.getElementById('new-email').value = '';
+                document.getElementById('new-category').value = 'general';
                 
                 // Clear custom timezone input if it exists
                 const customMemberTzInput = document.getElementById('custom-member-tz-input');
@@ -1921,6 +1925,7 @@ class TeamTimezoneManager {
         this.categories.push(newCategory);
         this.saveCategories();
         this.updateDisplay();
+        this.updateCategoryDropdown(); // Update the add member dropdown
         return newCategory;
     }
     
@@ -1938,6 +1943,7 @@ class TeamTimezoneManager {
         this.saveCategories();
         this.saveToStorage();
         this.updateDisplay();
+        this.updateCategoryDropdown(); // Update the add member dropdown
     }
     
     renameCategory(categoryId, newName) {
@@ -1946,6 +1952,7 @@ class TeamTimezoneManager {
             category.name = newName;
             this.saveCategories();
             this.updateDisplay();
+            this.updateCategoryDropdown(); // Update the add member dropdown
         }
     }
     
@@ -1955,6 +1962,7 @@ class TeamTimezoneManager {
             category.color = newColor;
             this.saveCategories();
             this.updateDisplay();
+            this.updateCategoryDropdown(); // Update the add member dropdown
         }
     }
     
@@ -1969,6 +1977,30 @@ class TeamTimezoneManager {
             this.categories = JSON.parse(saved);
         }
         this.loadCategoryOrder();
+    }
+
+    updateCategoryDropdown() {
+        const categorySelect = document.getElementById('new-category');
+        if (categorySelect) {
+            // Clear existing options
+            categorySelect.innerHTML = '';
+            
+            // Add all categories as options
+            this.categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+            
+            // Set default selection to 'general' if it exists, otherwise first category
+            const generalCategory = this.categories.find(cat => cat.id === 'general');
+            if (generalCategory) {
+                categorySelect.value = 'general';
+            } else if (this.categories.length > 0) {
+                categorySelect.value = this.categories[0].id;
+            }
+        }
     }
 
     loadCategoryOrder() {

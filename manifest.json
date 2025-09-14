@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "Team Timezone Manager",
+    "version": "1.0.0",
+    "description": "Professional timezone management for remote teams. Track team members' local times and coordinate across timezones.",
+    "author": "Amit Arya",
+    "homepage_url": "https://github.com/amitarya/team-timezone-extension",
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Team Timezone Manager",
+      "default_icon": {
+        "16": "icon2.png",
+        "32": "icon2.png",
+        "48": "icon2.png",
+        "128": "icon2.png"
+      }
+    },
+    "icons": {
+      "16": "icon2.png",
+      "32": "icon2.png",
+      "48": "icon2.png",
+      "128": "icon2.png"
+    },
+    "permissions": [
+      "storage"
+    ],
+    "host_permissions": [],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["icon2.png"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "minimum_chrome_version": "88",
+    "offline_enabled": true,
+    "short_name": "TeamTimePro"
+  }
+  

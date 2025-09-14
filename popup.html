@@ -1,0 +1,191 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team Timezones</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2><img src="icon2.png" alt="Team Timezone Helper" class="header-icon"> Team Timezones</h2>
+  
+  <!-- Toggle Button -->
+  <div class="toggle-section">
+    <button id="toggle-forms" class="toggle-btn">
+      <span class="toggle-text">Show Settings</span>
+    </button>
+  </div>
+
+  <!-- Settings Section (Hidden by default) -->
+  <div id="settings-section" class="settings-section" style="display: none;">
+    <!-- Home Timezone Section -->
+    <div class="home-timezone-section">
+      <h3>Your Home Timezone</h3>
+      <div class="form-row">
+        <select id="home-timezone">
+          <option value="">Select Your Timezone</option>
+          <option value="Asia/Kathmandu">Asia/Kathmandu (Nepal)</option>
+          <option value="Asia/Manila">Asia/Manila (Philippines)</option>
+          <option value="Asia/Bangkok">Asia/Bangkok (Thailand)</option>
+          <option value="Asia/Dhaka">Asia/Dhaka (Bangladesh)</option>
+          <option value="Europe/Kyiv">Europe/Kyiv (Ukraine)</option>
+          <option value="Europe/Lisbon">Europe/Lisbon (Portugal)</option>
+          <option value="America/New_York">America/New_York (US Eastern)</option>
+          <option value="America/Los_Angeles">America/Los_Angeles (US Pacific)</option>
+          <option value="Europe/London">Europe/London (UK)</option>
+          <option value="Europe/Berlin">Europe/Berlin (Germany)</option>
+          <option value="Asia/Tokyo">Asia/Tokyo (Japan)</option>
+          <option value="Australia/Sydney">Australia/Sydney (Australia)</option>
+          <option value="Pacific/Auckland">Pacific/Auckland (New Zealand)</option>
+          <option value="custom">Custom Timezone...</option>
+        </select>
+        <button id="custom-home-timezone" class="btn btn-secondary">Custom</button>
+      </div>
+      <div id="custom-home-timezone-input" class="form-row" style="display: none;">
+        <input type="text" id="custom-home-tz-input" placeholder="Enter custom timezone (e.g., UTC+5:30)">
+      </div>
+    </div>
+
+    <!-- Add New Team Member Section -->
+    <div class="add-form">
+      <h3>Add New Team Member</h3>
+      <div class="form-row">
+        <input type="text" id="new-name" placeholder="Name" maxlength="30">
+        <select id="new-timezone">
+          <option value="">Select Timezone</option>
+          <option value="Asia/Kathmandu">Nepal (UTC+5:45)</option>
+          <option value="Asia/Kolkata">India (UTC+5:30)</option>
+          <option value="Asia/Dhaka">Bangladesh (UTC+6:00)</option>
+          <option value="Asia/Karachi">Pakistan (UTC+5:00)</option>
+          <option value="Asia/Manila">Philippines (UTC+8:00)</option>
+          <option value="Asia/Bangkok">Thailand (UTC+7:00)</option>
+          <option value="Asia/Jakarta">Indonesia (UTC+7:00)</option>
+          <option value="Asia/Singapore">Singapore (UTC+8:00)</option>
+          <option value="Asia/Seoul">South Korea (UTC+9:00)</option>
+          <option value="Asia/Tokyo">Japan (UTC+9:00)</option>
+          <option value="Asia/Shanghai">China (UTC+8:00)</option>
+          <option value="Asia/Hong_Kong">Hong Kong (UTC+8:00)</option>
+          <option value="Asia/Taipei">Taiwan (UTC+8:00)</option>
+          <option value="Asia/Dubai">UAE (UTC+4:00)</option>
+          <option value="Asia/Qatar">Qatar (UTC+3:00)</option>
+          <option value="Asia/Kuwait">Kuwait (UTC+3:00)</option>
+          <option value="Asia/Riyadh">Saudi Arabia (UTC+3:00)</option>
+          <option value="Asia/Tehran">Iran (UTC+3:30)</option>
+          <option value="Asia/Jerusalem">Israel (UTC+2:00)</option>
+          <option value="Europe/London">UK (UTC+0:00)</option>
+          <option value="Europe/Paris">France (UTC+1:00)</option>
+          <option value="Europe/Berlin">Germany (UTC+1:00)</option>
+          <option value="Europe/Rome">Italy (UTC+1:00)</option>
+          <option value="Europe/Madrid">Spain (UTC+1:00)</option>
+          <option value="Europe/Amsterdam">Netherlands (UTC+1:00)</option>
+          <option value="Europe/Brussels">Belgium (UTC+1:00)</option>
+          <option value="Europe/Vienna">Austria (UTC+1:00)</option>
+          <option value="Europe/Zurich">Switzerland (UTC+1:00)</option>
+          <option value="Europe/Stockholm">Sweden (UTC+1:00)</option>
+          <option value="Europe/Oslo">Norway (UTC+1:00)</option>
+          <option value="Europe/Copenhagen">Denmark (UTC+1:00)</option>
+          <option value="Europe/Helsinki">Finland (UTC+2:00)</option>
+          <option value="Europe/Warsaw">Poland (UTC+1:00)</option>
+          <option value="Europe/Prague">Czech Republic (UTC+1:00)</option>
+          <option value="Europe/Budapest">Hungary (UTC+1:00)</option>
+          <option value="Europe/Bucharest">Romania (UTC+2:00)</option>
+          <option value="Europe/Sofia">Bulgaria (UTC+2:00)</option>
+          <option value="Europe/Athens">Greece (UTC+2:00)</option>
+          <option value="Europe/Istanbul">Turkey (UTC+3:00)</option>
+          <option value="Europe/Moscow">Russia (UTC+3:00)</option>
+          <option value="Europe/Kiev">Ukraine (UTC+2:00)</option>
+          <option value="America/New_York">US East (UTC-5:00)</option>
+          <option value="America/Chicago">US Central (UTC-6:00)</option>
+          <option value="America/Denver">US Mountain (UTC-7:00)</option>
+          <option value="America/Los_Angeles">US West (UTC-8:00)</option>
+          <option value="America/Toronto">Canada (UTC-5:00)</option>
+          <option value="America/Vancouver">Canada (UTC-8:00)</option>
+          <option value="America/Mexico_City">Mexico (UTC-6:00)</option>
+          <option value="America/Sao_Paulo">Brazil (UTC-3:00)</option>
+          <option value="America/Argentina/Buenos_Aires">Argentina (UTC-3:00)</option>
+          <option value="America/Santiago">Chile (UTC-3:00)</option>
+          <option value="America/Lima">Peru (UTC-5:00)</option>
+          <option value="America/Bogota">Colombia (UTC-5:00)</option>
+          <option value="Australia/Sydney">Australia (UTC+10:00)</option>
+          <option value="Australia/Melbourne">Australia (UTC+10:00)</option>
+          <option value="Australia/Perth">Australia (UTC+8:00)</option>
+          <option value="Pacific/Auckland">New Zealand (UTC+12:00)</option>
+          <option value="Pacific/Fiji">Fiji (UTC+12:00)</option>
+          <option value="Africa/Cairo">Egypt (UTC+2:00)</option>
+          <option value="Africa/Johannesburg">South Africa (UTC+2:00)</option>
+          <option value="Africa/Lagos">Nigeria (UTC+1:00)</option>
+          <option value="Africa/Nairobi">Kenya (UTC+3:00)</option>
+          <option value="Africa/Casablanca">Morocco (UTC+0:00)</option>
+          <option value="UTC">UTC</option>
+          <option value="GMT">GMT</option>
+          <option value="custom">Custom Timezone...</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input type="text" id="new-designation" placeholder="Designation" maxlength="50">
+        <input type="tel" id="new-phone" placeholder="Phone" maxlength="20">
+      </div>
+      <div class="form-row">
+        <input type="email" id="new-email" placeholder="Email" maxlength="100">
+        <select id="new-category">
+          <option value="general">General</option>
+        </select>
+      </div>
+      <div class="form-row button-row">
+        <button id="add-person" class="btn btn-primary">Add Person</button>
+        <button id="custom-member-timezone" class="btn btn-secondary">Custom Timezone</button>
+      </div>
+      <div id="custom-member-timezone-input" class="form-row" style="display: none;">
+        <input type="text" id="custom-member-tz-input" placeholder="Enter custom timezone (e.g., UTC+5:30)">
+      </div>
+    </div>
+
+    <!-- Category Management Section -->
+    <div class="category-management">
+      <h3>Manage Categories</h3>
+      <div class="form-row">
+        <input type="text" id="new-category-name" placeholder="New Category Name" maxlength="20">
+        <input type="color" id="new-category-color" value="#6c757d">
+        <button id="add-category" class="btn btn-secondary">Add Category</button>
+      </div>
+      <div class="existing-categories">
+        <h4>Existing Categories</h4>
+        <div id="categories-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team list -->
+  <div class="team-section">
+    <h3>Current Team </h3>
+    
+    <!-- Team Members Section (Dynamic Categories) -->
+    <div id="regular-section" class="regular-section">
+      <div id="categories-container"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Developed by <strong>Amit Arya</strong> &copy; 2025</p>
+    <p class="license">Free to use</p>
+    <div class="footer-stars">&starf; &star; &starf; &star; &starf;</div>
+    
+    <!-- Support Section -->
+    <div class="support-section">
+      <p class="support-text">Enjoying this extension? Support the developer!</p>
+      <div class="support-buttons">
+        <!-- <a href="https://paypal.me/aryaitandmedia" target="_blank" class="support-btn paypal-btn">
+          <span class="btn-icon">💳</span>
+          <span class="btn-text">Buy me a coffee</span>
+        </a> -->
+        <a href="https://paypal.me/aryaitandmedia" target="_blank" class="support-btn paypal-btn">
+          <span class="btn-icon"></span>
+          <span class="btn-text">Support via PayPal</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

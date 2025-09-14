@@ -143,4 +143,3 @@ If you find this extension helpful, consider supporting the developer:
 **⭐ Star this repository if you found it helpful!**
 
 </div>
-```

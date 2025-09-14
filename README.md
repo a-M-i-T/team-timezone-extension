@@ -78,7 +78,7 @@ git push origin feature/amazing-feature
 
 # Open a Pull Request
 ```
-
+```
 ---
 
 ## 🐛 **Troubleshooting**

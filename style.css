@@ -2265,7 +2265,7 @@ h3 {
 /* Fix any potential horizontal scroll issues */
 html, body {
     overflow-x: hidden;
-    max-width: 100vw;
+    /* max-width: 100vw; */
 }
 
 /* Ensure buttons don't cause overflow */
